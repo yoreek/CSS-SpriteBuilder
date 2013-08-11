@@ -48,12 +48,6 @@ Returns '1' when image is blank.
 
 =back
 
-=head2 is_transparent
-
-Returns '1' when image is transparent.
-
-=back
-
 =head2 reset([<image>])
 
 Make a blank image.
@@ -119,11 +113,10 @@ sub new {
     return $self;
 }
 
-sub driver                { undef                  }
-sub width                 { 0                      }
-sub height                { 0                      }
-sub is_blank              { $_[0]->width() ? 0 : 1 }
-sub is_transparent        { 1                      }
+sub driver   { undef                  }
+sub width    { 0                      }
+sub height   { 0                      }
+sub is_blank { $_[0]->width() ? 0 : 1 }
 
 sub reset {
     my ($self, $image) = @_;

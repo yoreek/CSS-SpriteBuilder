@@ -39,7 +39,7 @@ use_ok('CSS::SpriteBuilder');
         <<XML,
 <root>
     <sprite src="sample_sprite.png">
-        <image y="0" width="32" selector=".spr-small-add" is_transparent="1" is_background="0" x="0" height="32" repeat="no" image="small/Add.png"/>
+        <image y="0" width="32" selector=".spr-small-add" is_background="0" x="0" height="32" repeat="no" image="small/Add.png"/>
     </sprite>
 </root>
 XML

@@ -11,10 +11,9 @@ use strict;
 use Image::Magick;
 use base 'CSS::SpriteBuilder::ImageDriver::Common';
 
-sub driver         { 'ImageMagick'                         }
-sub width          { $_[0]->{_image}->Get('width')  || 0   }
-sub height         { $_[0]->{_image}->Get('height') || 0   }
-sub is_transparent { $_[0]->{_image}->Get('matte') ? 1 : 0 }
+sub driver { 'ImageMagick'                         }
+sub width  { $_[0]->{_image}->Get('width')  || 0   }
+sub height { $_[0]->{_image}->Get('height') || 0   }
 
 sub reset {
     my ($self, $image) = @_;

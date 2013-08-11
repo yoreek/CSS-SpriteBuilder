@@ -49,8 +49,6 @@ use constant SPRITE_OPTS => [qw/
 use constant IMAGE_OPTS => [qw/
     is_background
     is_repeat
-    offset_x
-    offset_y
     css_selector
 /];
 

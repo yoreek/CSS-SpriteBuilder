@@ -50,7 +50,6 @@ sub new {
 }
 
 sub target_file    { sprintf( $_[0]->{target_file}, $_[0]->{_sprite_no} )                }
-sub is_transparent { $_[0]->{target_file} =~ /\.png$/i && $_[0]->SUPER::is_transparent() }
 
 sub _init {
     my ($self, $image) = @_;
@@ -185,18 +184,13 @@ sub save_info {
         image           => $image->source_file(),
         width           => $image->width(),
         height          => $image->height(),
-        x               => $self->{_x} - $image->offset_x(),
-        y               => $self->{_y} - $image->offset_y(),
+        x               => $self->{_x},
+        y               => $self->{_y},
         selector        => $image->get_css_selector( $self->{css_selector_prefix} ),
         is_background   => (
             defined $image->is_background()
                 ? $image->is_background()
                 : $self->{is_background}
-        ) ? 1 : 0,
-        is_transparent  => (
-            defined $self->{transparent_color}
-                ? $self->{transparent_color}
-                : $self->is_transparent()
         ) ? 1 : 0,
         repeat          => $self->{layout} ne PACKED_LAYOUT && $image->is_repeat()
             ? $self->{layout} eq HORIZONTAL_LAYOUT ? 'y' : 'x'

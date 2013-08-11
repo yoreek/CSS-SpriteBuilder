@@ -11,8 +11,6 @@ sub new {
         source_file       => undef,
         is_background     => undef,
         is_repeat         => 0,
-        offset_x          => 0,
-        offset_y          => 0,
         css_selector      => undef,
         @args,
     );
@@ -28,8 +26,6 @@ sub new {
 sub source_file   { return $_[0]->{source_file   } }
 sub is_background { return $_[0]->{is_background } }
 sub is_repeat     { return $_[0]->{is_repeat     } }
-sub offset_x      { return $_[0]->{offset_x      } }
-sub offset_y      { return $_[0]->{offset_y      } }
 sub css_selector  { return $_[0]->{css_selector  } }
 
 sub get_css_selector {

@@ -29,7 +29,6 @@ use_ok('CSS::SpriteBuilder');
             'y' => 0,
             'width' => 32,
             'selector' => '.spr-small-add',
-            'is_transparent' => 1,
             'is_background' => 0,
             'x' => 0,
             'height' => 32,
