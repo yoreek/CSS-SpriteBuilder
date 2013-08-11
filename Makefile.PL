@@ -35,7 +35,7 @@ one of either the Image::Magick or GD Perl modules.
 
 It appears you have none of these.
 EOF
-    push @REQUIRED, $MODULES[0];
+    #push @REQUIRED, $MODULES[0];
 }
 
 WriteMakefile(
