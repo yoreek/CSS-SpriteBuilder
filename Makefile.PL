@@ -34,7 +34,7 @@ one of either the Image::Magick or GD Perl modules.
 
 It appears you have none of these.
 EOF
-    exit 1;
+exit;
 }
 
 WriteMakefile(
