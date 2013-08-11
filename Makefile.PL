@@ -9,7 +9,7 @@ use warnings;
 use strict;
 use ExtUtils::MakeMaker;
 
-our @MODULES = qw( Image::Magick GD );
+our @MODULES = qw( GD Image::Magick );
 
 my $isOK = 0;
 print "This module requires at least one of: ", join(", ", @MODULES), "...\n";
@@ -35,7 +35,7 @@ one of either the Image::Magick or GD Perl modules.
 
 It appears you have none of these.
 EOF
-    push @REQUIRED, $MODULES[0];
+    push @REQUIRED, $MODULES[0] => 0;
 }
 
 WriteMakefile(
