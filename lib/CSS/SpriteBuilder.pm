@@ -162,10 +162,10 @@ sub write_xml {
 
     if ($filename) {
         if ( openhandle($filename) ) {
-            return $dom->toFH($filename);
+            return $dom->toFH($filename, 2);
         }
         else {
-            return $dom->toFile($filename);
+            return $dom->toFile($filename, 2);
         }
     }
 
@@ -306,7 +306,17 @@ sub _parse_xml_config {
     die "XML::LibXML module is required!" if $@;
 
     my $xml_parser = XML::LibXML->new();
-    my $dom        = $xml_parser->parse_file($filename);
+
+    my $dom;
+    if ( openhandle($filename) ) {
+        $dom = $xml_parser->parse_fh($filename);
+    }
+    elsif ( $filename =~ /^</ ) {
+        $dom = $xml_parser->parse_string($filename);
+    }
+    else {
+        $dom = $xml_parser->parse_file($filename);
+    }
 
     my %global_opts = (
         ( map { $_             => $self->{$_}       } grep { exists $self->{$_} } @{ SPRITE_OPTS() } ),
