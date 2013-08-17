@@ -7,7 +7,7 @@ use Scalar::Util qw(openhandle);
 use CSS::SpriteBuilder::Constants;
 use CSS::SpriteBuilder::Sprite;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 sub new {
     my ($class, @args) = @_;

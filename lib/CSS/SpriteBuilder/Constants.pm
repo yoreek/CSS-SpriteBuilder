@@ -3,7 +3,7 @@ package CSS::SpriteBuilder::Constants;
 use warnings;
 use strict;
 
-use parent 'Exporter';
+use base 'Exporter';
 our @EXPORT = qw(
     LAYOUT_LIST
     PACKED_LAYOUT

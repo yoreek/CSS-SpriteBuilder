@@ -1,4 +1,7 @@
 Revision history for CSS::SpriteBuilder.
 
+0.02    2013-08-17
+        Replaced "use parent" with "use base".
+
 0.01    2013-08-11
         First version
