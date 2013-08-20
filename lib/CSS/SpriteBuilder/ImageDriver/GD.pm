@@ -20,15 +20,14 @@ our %COLOR_MAP = map {
 # Use truecolor by default
 GD::Image->trueColor(1);
 
-sub driver         { 'GD'                      }
-sub width          { $_[0]->{_image}->width()  }
-sub height         { $_[0]->{_image}->height() }
+sub driver         { 'GD'                                            }
+sub width          { $_[0]->{_image} ? $_[0]->{_image}->width()  : 0 }
+sub height         { $_[0]->{_image} ? $_[0]->{_image}->height() : 0 }
 
 sub reset {
     my ($self, $image) = @_;
 
-    $self->{_image} = $image ? $image->{_image}->clone() : GD::Image->new(0, 0, 1)
-        or die "Failed to create image due: $!";
+    $self->{_image} = $image ? $image->{_image}->clone() : undef;
 
     return;
 }
@@ -47,6 +46,8 @@ sub read {
 
 sub write {
     my ($self, $filename) = @_;
+
+    return unless $self->{_image};
 
     if ($filename =~ /\.(png|jpg|gif)$/i) {
         my $ext = lc $1;
@@ -77,6 +78,8 @@ sub write {
 sub set_transparent_color {
     my ($self, $color) = @_;
 
+    return unless $self->{_image};
+
     my $rgb   = $COLOR_MAP{ lc $color } or die "Unknown color '$color'";
     my $index = $self->{_image}->colorClosest(@$rgb);
     $self->{_image}->transparent($index);
@@ -92,7 +95,8 @@ sub extent {
 
     $new_image->alphaBlending(0);
     $new_image->saveAlpha(1);
-    $new_image->copy( $old_image, 0, 0, 0, 0, $old_image->width(), $old_image->height() );
+    $new_image->copy( $old_image, 0, 0, 0, 0, $old_image->width(), $old_image->height() )
+        if $old_image;
 
     $self->{_image} = $new_image;
 
